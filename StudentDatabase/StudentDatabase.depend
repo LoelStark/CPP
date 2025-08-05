@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1754374184 source:/home/st/Desktop/StudentDatabase/main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+
