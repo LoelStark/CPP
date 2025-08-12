@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-//ofstream Database("Database.txt");
+ofstream Database("Database.txt");
 class user
 {
     public:
@@ -65,7 +65,7 @@ void Greeting()
 }
 void Menu()
 {
-    cout << "1. Create Admin Account\n2.Create Student Account\n3.Login\n4.Exit"<<endl;
+    cout << "1. Create Admin Account\n2.Create Student Account\n3.Login\n4.Database\n5.Exit"<<endl;
 
 }
 
@@ -80,10 +80,40 @@ void StudentAcc()
               cin >> st1.age;
               cout << "ENter Student Email: ";
               cin >> st1.student_email;
-            st1.displayInfo();
-            ofstream Database("Database.txt");
+            //st1.displayInfo();
+            //ofstream Database("Database.txt");
             Database << st1.name << st1.age << st1.student_email<<endl;
             cout << "Account Created"<<endl;
+}
+
+void AccessDatabase()
+{
+    student st1;
+    string name;
+    string email;
+    int age;
+    cout << "This will access stored data from the student database"<<endl;
+    ifstream Database("Database.txt");
+    cout << "Enter name: ";
+    cin >> name;
+    cout << "Enter age: ";
+    cin >> age;
+    cout << "ENter associated email address: ";
+    cin >> email;
+    while (getline(Database, st1.name))
+    {
+        if (name == st1.name && age == st1.age && email == st1.student_email)
+        {
+            cout << "Name found on the student database"<<endl;
+            break;
+        }
+        else
+        {
+            cout << "name not found"<<endl;
+            break;
+        }
+    }
+
 }
 
 /**
@@ -104,7 +134,9 @@ int main()
 {
     int response;
     Greeting();
-    Menu();
+    while (true)
+    {
+        Menu();
     cout <<"Response: ";
     cin >> response;
     switch(response)
@@ -130,14 +162,22 @@ int main()
             cin >> email;
 
         }
-
-    case 4:
+        case 4:
+        {
+            cout << "You have chosen to access the stundet database...:"<<endl;
+            AccessDatabase();
+        }
+/**
+    case 5:
             cout << "Thank you for using the student collaboration platform..."<<endl;\
             exit(1);
             break;
+        **/
         default:
             cout << "Invalid option selected!"<<endl;
             break;
             }
+    }
+
 
 }
