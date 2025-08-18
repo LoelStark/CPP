@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1755356688 source:c:\users\loel\documents\cpp code\oop\brainsteady(backend)\main.cpp
+	<iostream>
+	<fstream>
+
